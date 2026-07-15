@@ -1,5 +1,15 @@
 from typing import List
 
+# num_merges isn't the vocabulary size itself, but it's the number of new tokens added 
+# on top of the base character set. In real BPE implementations (like GPT's tokenizer), 
+# this is exactly how it works — you pick a target vocabulary size, subtract the base 
+# character count, and that difference is your num_merges
+
+# The base character set is just the starting vocabulary — the set of unique individual 
+# characters that appear in your corpus before any merges happen. 
+# E.g. chars = list(corpus)
+# target_vocab_size = 10
+# num_merges = target_vocab_size - len(set(corpus))  # 10 - 4 = 6
 
 class Solution:
     def get_merges(self, corpus: str, num_merges: int) -> List[List[str]]:
